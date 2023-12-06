@@ -5,7 +5,7 @@ const Home = () => {
 	const { authenticated } = useAuth();
 	return (
 		<>
-			<h1>home page</h1>
+			<h3>Please log in</h3>
 			{!authenticated ? <LoginForm /> : <p>You are Logged in</p>}
 		</>
 	);
