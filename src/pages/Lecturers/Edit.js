@@ -7,7 +7,7 @@ const Edit = () => {
 	const [lecturer, setLecturer] = useState();
 	const [errors, setErrors] = useState({});
 
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [form, setForm] = useState({
 		name: "",
@@ -16,7 +16,7 @@ const Edit = () => {
 		address: "",
 	});
 
-    const errorStyle = {
+	const errorStyle = {
 		color: "red",
 	};
 
@@ -31,7 +31,7 @@ const Edit = () => {
 			})
 			.then((response) => {
 				setLecturer(response.data.data);
-                setForm(response.data.data)
+				setForm(response.data.data);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -47,11 +47,11 @@ const Edit = () => {
 		}));
 	};
 	const isRequired = (fields) => {
-		let included = false;
+		let included = true;
 		setErrors({});
 		fields.forEach((field) => {
 			if (!form[field]) {
-				included = true;
+				included = false;
 				setErrors((prevState) => ({
 					...prevState,
 					[field]: {
@@ -65,7 +65,7 @@ const Edit = () => {
 
 	const submitForm = (e) => {
 		e.preventDefault();
-		console.log("submitted", form);
+		// console.log("submitted", form);
 
 		if (isRequired(["name", "email", "phone", "address"])) {
 			let token = localStorage.getItem("token");
@@ -85,11 +85,10 @@ const Edit = () => {
 		}
 	};
 
-
 	return (
 		<>
 			<h2>Edit your lecturer</h2>
-            <form onSubmit={submitForm}>
+			<form onSubmit={submitForm}>
 				<div>
 					Name:{" "}
 					<input
@@ -99,6 +98,16 @@ const Edit = () => {
 						name="name"
 					/>
 					<span style={errorStyle}>{errors.name?.message}</span>
+				</div>
+				<div>
+					Address:{" "}
+					<input
+						type="text"
+						onChange={handleForm}
+						value={form.address}
+						name="address"
+					/>
+					<span style={errorStyle}>{errors.address?.message}</span>
 				</div>
 				<div>
 					Email:{" "}
@@ -111,24 +120,14 @@ const Edit = () => {
 					<span style={errorStyle}>{errors.email?.message}</span>
 				</div>
 				<div>
-					Phone Number:{" "}
+					Phone:{" "}
 					<input
-						type="text"
+						type="number"
 						onChange={handleForm}
 						value={form.phone}
 						name="phone"
 					/>
 					<span style={errorStyle}>{errors.phone?.message}</span>
-				</div>
-				<div>
-				Address:{" "}
-					<input
-						type="text"
-						onChange={handleForm}
-						value={form.address}
-						name="address"
-					/>
-					<span style={errorStyle}>{errors.address?.message}</span>
 				</div>
 				<button
 					type="submit"
