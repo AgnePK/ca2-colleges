@@ -37,7 +37,7 @@ const Create = () => {
 		e.preventDefault();
 		console.log("submitted", form);
 
-		if (isRequired(["title", "description", "city", "points", "level"])) {
+		if (isRequired(["title", "description", "code", "points", "level"])) {
 			let token = localStorage.getItem("token");
 			axios
 				.post(`/api/courses`, form, {
@@ -50,6 +50,7 @@ const Create = () => {
 				})
 				.catch((err) => {
 					console.error(err);
+					console.log(err.response.data);
 				});
 		}
 	};
@@ -93,29 +94,37 @@ const Create = () => {
 					<span style={errorStyle}>{errors.code?.message}</span>
 				</div>
 				<div>
-				points:{" "}
+					points:{" "}
 					<input
 						type="number"
 						onChange={handleForm}
 						value={form.points}
 						name="points"
-						min="50" max="625"
-						step="50"
+						min="100"
+						max="625"
 					/>
 					<span style={errorStyle}>{errors.points?.message}</span>
 				</div>
 				<div>
-				level:{" "}
+					level:{" "}
 					<input
 						type="number"
 						onChange={handleForm}
 						value={form.level}
 						name="level"
-						min="5" max="10"
+						min="5"
+						max="10"
 					/>
 					<span style={errorStyle}>{errors.level?.message}</span>
 				</div>
-				<input type="submit" />
+				<button
+					type="submit"
+					name="action"
+					class="btn waves-effect waves-light"
+				>
+					Submit
+					<i class="material-icons right">send</i>
+				</button>
 			</form>
 		</>
 	);
