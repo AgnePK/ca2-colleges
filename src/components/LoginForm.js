@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const LoginForm = () => {
 	const { onAuthenticated } = useAuth();
+	const navigate = useNavigate();
 
 	const [form, setForm] = useState({
 		email: "",
@@ -25,6 +27,7 @@ const LoginForm = () => {
 			.then((response) => {
 				// console.log(response.data);
 				onAuthenticated(true, response.data.token);
+				navigate("/courses")
 			})
 			.catch((err) => {
 				console.error(err);

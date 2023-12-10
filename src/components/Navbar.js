@@ -11,10 +11,10 @@ const Navbar = () => {
 	};
 	return (
 		<>
-			<nav>
-				<div class="nav-wrapper indigo lighten-2">
-					<a href="#" class="brand-logo ">
-						Logo
+			<nav class="black-text">
+				<div class="nav-wrapper blue-grey">
+					<a href="#" class="brand-logo">
+						Colleges API
 					</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li>
