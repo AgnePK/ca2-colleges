@@ -40,48 +40,41 @@ const Index = () => {
 	if (enrolments.length === 0) return <h3>There are no enrolments</h3>;
 	const enrolmentsList = enrolments.map((enrolment) => {
 		return (
-			<div key={enrolment._id}>
-				<div className="row">
-					<div class="col s12">
-						<div class="card grey lighten-5 hoverable">
-							<div class="card-content">
-								<p>
-									<b>Enrolment ID: </b>
-									<Link to={`/enrolments/${enrolment.id}`}>
-										{" "}
-										{enrolment.id}
-									</Link>
-								</p>
-								<p>
-									<b>Lecturer: </b>
-									<Link to={`/lecturers/${enrolment.lecturer.id}`}>
-										{" "}
-										{enrolment.lecturer.name}
-									</Link>
-								</p>
-								<p>
-									<b>Course title: </b>
-									<Link to={`/lecturers/${enrolment.course.id}`}>
-										{" "}
-										{enrolment.course.title}
-									</Link>
-								</p>
-								<p>
-									<b>Status: </b> {enrolment.status}
-								</p>
-							</div>
-							<div class="card-action">
-								{authenticated ? (
-									<DeleteBtn
-										resource="enrolments"
-										id={enrolment._id}
-										deleteCallback={removeEnrolment}
-									/>
-								) : (
-									""
-								)}
-							</div>
-						</div>
+			<div key={enrolment._id} class="col s6">
+				<div class="card grey lighten-5 hoverable">
+					<div class="card-content">
+						<p>
+							<b>Enrolment ID: </b>
+							<Link to={`/enrolments/${enrolment.id}`}> {enrolment.id}</Link>
+						</p>
+						<p>
+							<b>Lecturer: </b>
+							<Link to={`/lecturers/${enrolment.lecturer.id}`}>
+								{" "}
+								{enrolment.lecturer.name}
+							</Link>
+						</p>
+						<p>
+							<b>Course title: </b>
+							<Link to={`/lecturers/${enrolment.course.id}`}>
+								{" "}
+								{enrolment.course.title}
+							</Link>
+						</p>
+						<p>
+							<b>Status: </b> {enrolment.status}
+						</p>
+					</div>
+					<div class="card-action">
+						{authenticated ? (
+							<DeleteBtn
+								resource="enrolments"
+								id={enrolment._id}
+								deleteCallback={removeEnrolment}
+							/>
+						) : (
+							""
+						)}
 					</div>
 				</div>
 			</div>
@@ -98,7 +91,7 @@ const Index = () => {
 					</button>
 				</Link>
 			</div>
-			{enrolmentsList}
+			<div className="row">{enrolmentsList}</div>
 		</>
 	);
 };

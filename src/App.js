@@ -17,6 +17,9 @@ import LecturersEdit from "./pages/Lecturers/Edit.js";
 import LecturersShow from "./pages/Lecturers/Show.js";
 
 import EnrolmentsIndex from "./pages/Enrolments/Index.js";
+import EnrolmentsCreate from "./pages/Enrolments/Create.js";
+import EnrolmentsEdit from "./pages/Enrolments/Edit.js";
+import EnrolmentsShow from "./pages/Enrolments/Show.js";
 
 import LoginForm from "./components/LoginForm.js";
 
@@ -46,6 +49,9 @@ function App() {
 				<Route path="/lecturers/:id" element={<LecturersShow />}></Route>
 
 				<Route path="/enrolments" element={<EnrolmentsIndex />}></Route>
+				<Route path="/enrolments/create" element={<EnrolmentsCreate />}></Route>
+				<Route path="/enrolments/:id/edit" element={<EnrolmentsEdit />}></Route>
+				<Route path="/enrolments/:id" element={<EnrolmentsShow />}></Route>
 
 
 			</>
