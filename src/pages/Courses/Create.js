@@ -50,11 +50,11 @@ const Create = () => {
 				})
 				.catch((err) => {
 					console.error(err);
-					console.log(err.response.data);
+					console.log(err.response.data.errors.code[0]);
+					setErrors(err.response.data.errors.code[0]);
 				});
 		}
 	};
-
 	const errorStyle = {
 		color: "red",
 	};
@@ -117,13 +117,14 @@ const Create = () => {
 					/>
 					<span style={errorStyle}>{errors.level?.message}</span>
 				</div>
+				{/* <div>{errors}</div> */}
 				<button
 					type="submit"
 					name="action"
-					class="btn waves-effect waves-light"
+					className="btn waves-effect waves-light"
 				>
 					Submit
-					<i class="material-icons right">send</i>
+					<i className="material-icons right">send</i>
 				</button>
 			</form>
 		</>

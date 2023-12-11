@@ -28,10 +28,10 @@ const Show = () => {
 	return (
 		<>
 			<p>Show lecturer: {id}</p>
-			<div class="">
+			<div className="">
 				<div>
 					<img src={`https://picsum.photos/200?random=${lecturer.id}`}
-					class="circle responsive-img" />
+					className="circle responsive-img" />
 				</div>
 
 				<p>
@@ -47,7 +47,7 @@ const Show = () => {
 				<p>
 					<b>Phone: </b> {lecturer.phone}
 				</p>
-				<Link to={`/lecturers/${id}/edit`} class="btn waves-effect waves-light "><i class="material-icons right">mode_edit</i>Edit</Link>
+				<Link to={`/lecturers/${id}/edit`} className="btn waves-effect waves-light "><i className="material-icons right">mode_edit</i>Edit</Link>
 			</div>
 		</>
 	);

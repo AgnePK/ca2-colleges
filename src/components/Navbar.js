@@ -9,32 +9,48 @@ const Navbar = () => {
 		onAuthenticated(false);
 		navigate("/");
 	};
+
 	return (
 		<>
-			<nav class="black-text">
-				<div class="nav-wrapper blue-grey">
-					<a href="#" class="brand-logo">
-						Colleges API
-					</a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li>
-							{authenticated ? <button onClick={logout} class="waves-effect waves-light btn-small">Logout</button> : ""}
-						</li>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/courses">Courses</Link>
-						</li>
-						<li>
-							<Link to="/lecturers">Lecturers</Link>
-						</li>
-						<li>
-							<Link to="/enrolments">Enrolments</Link>
-						</li>
-					</ul>
-				</div>
-			</nav>
+			<div className="navbar-fixed">
+				<nav className="black-text">
+					<div className="nav-wrapper blue-grey lighten-5
+">
+						<Link to="/" className="brand-logo black-text center">
+							Colleges
+						</Link>
+
+						<ul id="nav-mobile" className="left hide-on-sm-and-down">
+							<li>
+								<Link className="black-text"to="/">Home</Link>
+							</li>
+							<li>
+								<Link className="black-text"to="/courses">Courses</Link>
+							</li>
+							<li>
+								<Link className="black-text"to="/lecturers">Lecturers</Link>
+							</li>
+							<li>
+								<Link className="black-text"to="/enrolments">Enrolments</Link>
+							</li>
+						</ul>
+						<ul className="right">
+							<li>
+								{authenticated ? (
+									<button
+										onClick={logout}
+										className="waves-effect waves-light btn-small"
+									>
+										Logout
+									</button>
+								) : (
+									""
+								)}
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
 		</>
 	);
 };

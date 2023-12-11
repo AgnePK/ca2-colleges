@@ -124,7 +124,7 @@ const Edit = () => {
 				<div>
 					Course:{" "}
 					<select
-						class="browser-default"
+						className="browser-default"
 						id="course_id"
 						name="course_id"
 						onChange={handleForm}
@@ -141,7 +141,7 @@ const Edit = () => {
 				<div>
 					Lecturer:{" "}
 					<select
-						class="browser-default"
+						className="browser-default"
 						id="lecturer_id"
 						name="lecturer_id"
 						onChange={handleForm}
@@ -176,10 +176,10 @@ const Edit = () => {
 					<span style={errorStyle}>{errors.points?.message}</span>
 				</div>
 
-				<div class="input-field col s12">
+				<div className="input-field col s12">
 					Status:{" "}
 					<select
-						class="browser-default"
+						className="browser-default"
 						id="status"
 						name="status"
 						onChange={handleForm}
@@ -197,10 +197,10 @@ const Edit = () => {
 				<button
 					type="submit"
 					name="action"
-					class="btn waves-effect waves-light"
+					className="btn waves-effect waves-light"
 				>
 					Submit
-					<i class="material-icons right">send</i>
+					<i className="material-icons right">send</i>
 				</button>
 			</form>
 		</>

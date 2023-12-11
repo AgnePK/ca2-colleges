@@ -147,10 +147,10 @@ const Edit = () => {
 				<button
 					type="submit"
 					name="action"
-					class="btn waves-effect waves-light right"
+					className="btn waves-effect waves-light right"
 				>
 					Submit
-					<i class="material-icons right">send</i>
+					<i className="material-icons right">send</i>
 				</button>
 			</form>
 		</>

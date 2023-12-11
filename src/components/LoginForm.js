@@ -45,8 +45,8 @@ const LoginForm = () => {
 
 	return (
 		<>
-			<div class="row">
-				<div class="col s6 left">
+			<div className="row">
+				<div className="col s6 left">
 					Email:{" "}
 					<input
 						onChange={handleForm}
@@ -66,7 +66,7 @@ const LoginForm = () => {
 					<button
 						onClick={handleClick}
 						name="action"
-						class="btn waves-effect waves-light"
+						className="btn waves-effect waves-light"
 					>
 						Login
 					</button>

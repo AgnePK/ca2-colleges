@@ -101,7 +101,7 @@ const Create = () => {
 				<div>
 					Course:{" "}
 					<select
-						class="browser-default"
+						className="browser-default"
 						id="course_id"
 						name="course_id"
 						onChange={handleForm}
@@ -121,7 +121,7 @@ const Create = () => {
 				<div>
 					Lecturer:{" "}
 					<select
-						class="browser-default"
+						className="browser-default"
 						id="lecturer_id"
 						name="lecturer_id"
 						onChange={handleForm}
@@ -158,9 +158,9 @@ const Create = () => {
 					<span style={errorStyle}>{errors.time?.message}</span>
 				</div>
 
-				<div class="input-field col s12">
+				<div className="input-field col s12">
 					<select
-						class="browser-default"
+						className="browser-default"
 						id="status"
 						name="status"
 						onChange={handleForm}
@@ -181,10 +181,10 @@ const Create = () => {
 				<button
 					type="submit"
 					name="action"
-					class="btn waves-effect waves-light right"
+					className="btn waves-effect waves-light right"
 				>
 					Submit
-					<i class="material-icons right">send</i>
+					<i className="material-icons right">send</i>
 				</button>
 			</form>
 		</>
