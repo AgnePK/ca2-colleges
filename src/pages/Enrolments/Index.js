@@ -3,8 +3,7 @@ import axios from "../../congif/api.js";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext.js";
 
-import DeleteBtn from "../../components/DeleteBtn";
-import LoginForm from "../../components/LoginForm.js";
+import Modal from "../../components/Modal.js";
 
 const Index = () => {
 	const { authenticated } = useAuth();
@@ -32,7 +31,7 @@ const Index = () => {
 	const removeEnrolment = (id) => {
 		console.log("deleted", id);
 		let updatedEnrolments = enrolments.filter((enrolment) => {
-			return enrolment._id !== id;
+			return enrolment.id !== id;
 		});
 		setEnrolments(updatedEnrolments);
 	};
@@ -40,9 +39,9 @@ const Index = () => {
 	if (enrolments.length === 0) return <h3>There are no enrolments</h3>;
 	const enrolmentsList = enrolments.map((enrolment) => {
 		return (
-			<div key={enrolment._id} class="col s6">
-				<div class="card grey lighten-5 hoverable">
-					<div class="card-content">
+			<div key={enrolment.id} className="col s6">
+				<div className="card grey lighten-5 hoverable">
+					<div className="card-content">
 						<p>
 							<b>Enrolment ID: </b>
 							<Link to={`/enrolments/${enrolment.id}`}> {enrolment.id}</Link>
@@ -65,16 +64,13 @@ const Index = () => {
 							<b>Status: </b> {enrolment.status}
 						</p>
 					</div>
-					<div class="card-action">
-						{authenticated ? (
-							<DeleteBtn
-								resource="enrolments"
-								id={enrolment._id}
-								deleteCallback={removeEnrolment}
-							/>
-						) : (
-							""
-						)}
+					<div className="card-action">
+					<Modal
+							resource="enrolments"
+							id={enrolment.id}
+							deleteCallback={removeEnrolment}
+							variable={enrolment}
+						/>
 					</div>
 				</div>
 			</div>
@@ -83,11 +79,11 @@ const Index = () => {
 
 	return (
 		<>
-			<div class="center">
+			<div className="center">
 				<h1>All enrolments</h1>
 				<Link to="/enrolments/create">
-					<button class="waves-effect waves-light btn-large">
-						<i class="material-icons right">add_circle</i>Create Enrolment
+					<button className="waves-effect waves-light btn-large">
+						<i className="material-icons right">add_circle</i>Create Enrolment
 					</button>
 				</Link>
 			</div>

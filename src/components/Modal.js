@@ -10,6 +10,8 @@ class Modal extends Component {
 	// I had huge difficulties getting the general modal
 	// component to work
 
+	// console.log("test");
+
 	componentDidMount() {
 		const options = {
 			onOpenStart: () => {
@@ -37,28 +39,28 @@ class Modal extends Component {
 		// instance.open();
 		// instance.close();
 		// instance.destroy();
-	}
 
+	}
+	
 	render() {
-        // console.log(this.props.resource);
 		return (
 			<div>
 				<a
 					className="waves-effect waves-light red btn modal-trigger"
-					data-target="myModal"
+					data-target={`myModal-${this.props.id}`}
 				>
 					Delete
 				</a>
-
 				<div
 					ref={(Modal) => {
 						this.Modal = Modal;
 					}}
-					id="myModal"
+					id={`myModal-${this.props.id}`}
 					className="modal"
 				>
 					<div className="modal-content">
 						<h4>Delete {this.props.resource}</h4>
+						<h4>{this.props.id}</h4>
 						<p>Warning! You are trying to delete this. Are you sure?</p>
 					</div>
 					<div className="modal-footer">
@@ -67,8 +69,8 @@ class Modal extends Component {
 						</a>
 						<DeleteBtn
 							resource={this.props.resource}
-							id={this.props.resource._id}
-							deleteCallback={this.props.removeCourse}
+							id={this.props.id}
+							deleteCallback={this.props.deleteCallback}
                             variable={this.props.variable}
 						/>
 					</div>

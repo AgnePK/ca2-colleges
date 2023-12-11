@@ -3,8 +3,7 @@ import axios from "../../congif/api.js";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext.js";
 
-import DeleteBtn from "../../components/DeleteBtn";
-import LoginForm from "../../components/LoginForm.js";
+import Modal from "../../components/Modal.js";
 
 const Index = () => {
 	const { authenticated } = useAuth();
@@ -32,29 +31,22 @@ const Index = () => {
 	const removeLecturer = (id) => {
 		console.log("deleted", id);
 		let updatedLecturers = lecturers.filter((lecturer) => {
-			return lecturer._id !== id;
+			return lecturer.id !== id;
 		});
 		setLecturers(updatedLecturers);
 	};
 
 	if (lecturers.length === 0) return <h3>Loading...</h3>;
 	const lecturersList = lecturers.map((lecturer) => {
-		// let enrolmentInfo = lecturer.enrolments.map((enrolment)=>{
-		// // let lecturers = lecturer.enrolments.lecturer.map((lecturer)=>{
-		// // 	return lecturer;
-		// // })
-		// 	return <div key={enrolment._id}>{enrolment.id}</div>
-
-		// })
 		return (
-			<div key={lecturer._id}>
+			<div key={lecturer.id}>
 				{/* <div>{enrolmentInfo}</div> */}
-				<div class="col s12 m6 l4">
-					<div class="card grey lighten-5 hoverable">
-						<div class="card-image">
+				<div className="col s6 m4 l4">
+					<div className="card grey lighten-5 hoverable">
+						<div className="card-image">
 							<img src={`https://picsum.photos/100?random=${lecturer.id}`} />
 						</div>
-						<div class="card-content">
+						<div className="card-content">
 							<p>
 								<b>Name: </b>
 								<Link to={`/lecturers/${lecturer.id}`}> {lecturer.name}</Link>
@@ -66,16 +58,13 @@ const Index = () => {
 								<b>Phone Number: </b> {lecturer.phone}
 							</p>
 						</div>
-						<div class="card-action">
-							{authenticated ? (
-								<DeleteBtn
-									resource="lecturers"
-									id={lecturer._id}
-									deleteCallback={removeLecturer}
-								/>
-							) : (
-								""
-							)}
+						<div className="card-action">
+						<Modal
+							resource="lecturers"
+							id={lecturer.id}
+							deleteCallback={removeLecturer}
+							variable={lecturer}
+						/>
 						</div>
 					</div>
 				</div>
@@ -85,11 +74,11 @@ const Index = () => {
 
 	return (
 		<>
-			<div class="center">
+			<div className="center">
 				<h1>All lecturers</h1>
 				<Link to="/lecturers/create">
-					<button class="waves-effect waves-light btn-large">
-						<i class="material-icons right">add_circle</i>Add Lecturer
+					<button className="waves-effect waves-light btn-large">
+						<i className="material-icons right">add_circle</i>Add Lecturer
 					</button>
 				</Link>
 			</div>

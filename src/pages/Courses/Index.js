@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext.js";
 
 import DeleteBtn from "../../components/DeleteBtn";
-import LoginForm from "../../components/LoginForm.js";
+import Modal from "../../components/Modal.js";
+
+// import M from "materialize-css";
 
 const Index = () => {
 	const { authenticated } = useAuth();
@@ -32,64 +34,57 @@ const Index = () => {
 	const removeCourse = (id) => {
 		console.log("deleted", id);
 		let updatedCourses = courses.filter((course) => {
-			return course._id !== id;
+			return course.id !== id;
 		});
 		setCourses(updatedCourses);
 	};
-
 	if (courses.length === 0) return <h3>There are no courses</h3>;
 	const coursesList = courses.map((course) => {
-		// let enrolmentInfo = course.enrolments.map((enrolment)=>{
-		// // let lecturers = course.enrolments.lecturer.map((lecturer)=>{
-		// // 	return lecturer;
-		// // })
-		// 	return <div key={enrolment._id}>{enrolment.id}</div>
-
-		// })
 		return (
-			<div key={course._id}>
-				{/* <div>{enrolmentInfo}</div> */}
-				<div class="col s5">
-					<div class="card grey lighten-5 hoverable">
-						<div class="card-content">
-							<p>
-								<b>Title: </b>
-								<Link to={`/courses/${course.id}`}> {course.title}</Link>
-							</p>
-							<p class="truncate">
-								<b>Description: </b> {course.description}
-							</p>
-							<p>
-								<b>Course Code: </b> {course.code}
-							</p>
-							<p>
-								<b>Course Level: </b> {course.level}
-							</p>
-						</div>
-						<div class="card-action">
-							{authenticated ? (
-								<DeleteBtn
-									resource="courses"
-									id={course._id}
-									deleteCallback={removeCourse}
-								/>
-							) : (
-								""
-							)}
-						</div>
+			<div key={course.id} className="col s6">
+				<div className="card grey lighten-5 hoverable">
+					<div className="card-content">
+						<p>
+							<b>Title: </b>
+							<Link to={`/courses/${course.id}`}> {course.title}</Link>
+						</p>
+						<p className="truncate">
+							<b>Description: </b> {course.description}
+						</p>
+						<p>
+							<b>Course Code: </b> {course.code}
+						</p>
+						<p>
+							<b>Course Level: </b> {course.level}
+						</p>
+					</div>
+					<div className="card-action">
+						<Modal
+							resource="courses"
+							id={course.id}
+							deleteCallback={removeCourse}
+							variable={course}
+						/>
+						{/* Try to use the modal component. put props of deletebtn into modal and use it in the modal.js. use deletebtn in modal.js  */}
 					</div>
 				</div>
 			</div>
 		);
 	});
 
+
+	// document.addEventListener('DOMContentLoaded', function() {
+	// 	var elems = document.querySelectorAll('.modal');
+	// 	var instances = M.Modal.init(elems, options);
+	//   });
+
 	return (
 		<>
-			<div class="center">
+			<div className="center">
 				<h1>All courses</h1>
 				<Link to="/courses/create">
-					<button class="waves-effect waves-light btn-large">
-						<i class="material-icons right">add_circle</i>Create Course
+					<button className="waves-effect waves-light btn-large">
+						<i className="material-icons right">add_circle</i>Create Course
 					</button>
 				</Link>
 			</div>
