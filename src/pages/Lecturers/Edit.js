@@ -6,6 +6,7 @@ const Edit = () => {
 	const { id } = useParams();
 	const [lecturer, setLecturer] = useState();
 	const [errors, setErrors] = useState({});
+	const [apiErrors, setApiErrors] = useState({});
 
     const navigate = useNavigate();
 
@@ -81,6 +82,9 @@ const Edit = () => {
 				})
 				.catch((err) => {
 					console.error(err);
+					console.error(err.response);
+					setApiErrors(err.response.data.errors);
+
 				});
 		}
 	};
@@ -99,6 +103,8 @@ const Edit = () => {
 						name="name"
 					/>
 					<span style={errorStyle}>{errors.name?.message}</span>
+					<span style={errorStyle}>{apiErrors.name}</span>
+
 				</div>
 				<div>
 					Email:{" "}
@@ -109,6 +115,8 @@ const Edit = () => {
 						name="email"
 					/>
 					<span style={errorStyle}>{errors.email?.message}</span>
+					<span style={errorStyle}>{apiErrors.email}</span>
+
 				</div>
 				<div>
 					Phone Number:{" "}
@@ -119,6 +127,8 @@ const Edit = () => {
 						name="phone"
 					/>
 					<span style={errorStyle}>{errors.phone?.message}</span>
+					<span style={errorStyle}>{apiErrors.phone}</span>
+
 				</div>
 				<div>
 				Address:{" "}
@@ -129,6 +139,8 @@ const Edit = () => {
 						name="address"
 					/>
 					<span style={errorStyle}>{errors.address?.message}</span>
+					<span style={errorStyle}>{apiErrors.address}</span>
+
 				</div>
 				<button
 					type="submit"

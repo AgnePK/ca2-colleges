@@ -36,35 +36,40 @@ const Index = () => {
 		setLecturers(updatedLecturers);
 	};
 
-	if (lecturers.length === 0) return <h3>Loading...</h3>;
+	if (lecturers.length === 0)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 	const lecturersList = lecturers.map((lecturer) => {
 		return (
 			<div key={lecturer.id}>
 				{/* <div>{enrolmentInfo}</div> */}
 				<div className="col s6 m4 l4">
-					<div className="card grey lighten-5 hoverable">
+					<div className="card transparent hoverable">
 						<div className="card-image">
 							<img src={`https://picsum.photos/100?random=${lecturer.id}`} />
 						</div>
 						<div className="card-content">
 							<p>
-								<b>Name: </b>
-								<Link to={`/lecturers/${lecturer.id}`}> {lecturer.name}</Link>
+								<Link
+									className="card-title black-text"
+									to={`/lecturers/${lecturer.id}`}
+								>
+									{" "}
+									{lecturer.name}
+								</Link>
 							</p>
-							<p>
-								<b>Email: </b> {lecturer.email}
-							</p>
-							<p>
-								<b>Phone Number: </b> {lecturer.phone}
-							</p>
+							<p className="light">{lecturer.email}</p>
 						</div>
 						<div className="card-action">
-						<Modal
-							resource="lecturers"
-							id={lecturer.id}
-							deleteCallback={removeLecturer}
-							variable={lecturer}
-						/>
+							<Modal
+								resource="lecturers"
+								id={lecturer.id}
+								deleteCallback={removeLecturer}
+								variable={lecturer}
+							/>
 						</div>
 					</div>
 				</div>

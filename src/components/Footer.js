@@ -5,33 +5,27 @@ const Footer = () => {
 				<div className="container">
 					<div className="row">
 						<div className="col l6 s12">
-							<h5 className="black-text">Footer Content</h5>
+							<h5 className="black-text">Colleges API</h5>
 							<p className="black-text text-lighten-4">
-								You can use rows and columns here to organize your footer
-								content.
+								This website displays all courses, lecturers and their enrolments. Registered and authenticated users are able to create, read, update and delete all lecturers, courses and enrolments. 
 							</p>
 						</div>
 						<div className="col l4 offset-l2 s12">
 							<h5 className="black-text">Links</h5>
 							<ul>
 								<li>
-									<a className="black-text text-lighten-3" href="#!">
-										Link 1
+									<a target="_blank" className="black-text text-lighten-3" href="https://github.com/AgnePK/ca2-colleges">
+										Github
 									</a>
 								</li>
 								<li>
-									<a className="black-text text-lighten-3" href="#!">
-										Link 2
+									<a target="_blank" className="black-text text-lighten-3" href="https://www.figma.com/file/9TgGaemEoWAULLntCDNIXx/CA2-CollegesAPI?type=design&node-id=0%3A1&mode=design&t=36dAXwGz92cepInK-1">
+										Figma
 									</a>
 								</li>
 								<li>
-									<a className="black-text text-lighten-3" href="#!">
-										Link 3
-									</a>
-								</li>
-								<li>
-									<a className="black-text text-lighten-3" href="#!">
-										Link 4
+									<a target="_blank" className="black-text text-lighten-3" href="https://materializecss.com/">
+										MaterializeCSS
 									</a>
 								</li>
 							</ul>

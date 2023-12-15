@@ -7,7 +7,7 @@ const Show = () => {
 	const { id } = useParams();
 	const [course, setCourse] = useState();
 
-	let token = localStorage.getItem("token")
+	let token = localStorage.getItem("token");
 
 	useEffect(() => {
 		axios
@@ -17,27 +17,44 @@ const Show = () => {
 				},
 			})
 			.then((response) => {
-				// console.log(response.data);
+				console.log(response.data);
 				setCourse(response.data.data);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
-	},[id]);
+	}, [id]);
 	if (!course) return <h3>Loading...</h3>;
 	return (
 		<>
-			<p>Show course: {id}</p>
 			<div>
-				<p>
-					<b>Title: {course.title}</b>
-				</p>
-				<p>
-					<b>Description: </b> {course.description}
-				</p>
-				<Link to={`/courses/${id}/edit`}>Edit</Link>
-
-				<hr />
+				<div class="card white">
+					<div class="card-content black-text">
+						<span class="card-title">{course.title}</span>
+						<br/>
+						<blockquote className="light">{course.description} </blockquote>
+						<br />
+						<div>
+							{"Level "}
+							{course.level}
+							{" course"}
+						</div>
+						<div>
+							{"Code: "}
+							{course.code}
+						</div>
+						<div>
+							{"Points: "}
+							{course.points}
+						</div>
+					</div>
+					<div class="card-action">
+						<Link to={`/courses/${id}/edit`}>
+							{" "}
+							<i class="material-icons tiny">mode_edit</i> Edit
+						</Link>
+					</div>
+				</div>
 			</div>
 		</>
 	);

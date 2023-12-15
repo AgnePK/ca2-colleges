@@ -6,6 +6,7 @@ const Edit = () => {
 	const { id } = useParams();
 	const [course, setCourse] = useState();
 	const [errors, setErrors] = useState({});
+	const [apiErrors, setApiErrors] = useState({});
 
 	const navigate = useNavigate();
 
@@ -82,6 +83,7 @@ const Edit = () => {
 				})
 				.catch((err) => {
 					console.error(err);
+					setApiErrors(err.response.data.errors);
 				});
 		}
 	};
@@ -99,6 +101,7 @@ const Edit = () => {
 						name="title"
 					/>
 					<span style={errorStyle}>{errors.title?.message}</span>
+					<span style={errorStyle}>{apiErrors.code}</span>
 				</div>
 				<div>
 					description:{" "}
@@ -109,6 +112,8 @@ const Edit = () => {
 						name="description"
 					/>
 					<span style={errorStyle}>{errors.description?.message}</span>
+					<span style={errorStyle}>{apiErrors.description}</span>
+
 				</div>
 				<div>
 					Code:{" "}
@@ -119,6 +124,8 @@ const Edit = () => {
 						name="code"
 					/>
 					<span style={errorStyle}>{errors.code?.message}</span>
+					<span style={errorStyle}>{apiErrors.code}</span>
+
 				</div>
 				<div>
 					points:{" "}
@@ -131,6 +138,8 @@ const Edit = () => {
 						max="625"
 					/>
 					<span style={errorStyle}>{errors.points?.message}</span>
+					<span style={errorStyle}>{apiErrors.points}</span>
+
 				</div>
 				<div>
 					level:{" "}
@@ -143,6 +152,7 @@ const Edit = () => {
 						max="10"
 					/>
 					<span style={errorStyle}>{errors.level?.message}</span>
+					<span style={errorStyle}>{apiErrors.level}</span>
 				</div>
 				<button
 					type="submit"

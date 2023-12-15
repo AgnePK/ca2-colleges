@@ -36,36 +36,48 @@ const Index = () => {
 		setEnrolments(updatedEnrolments);
 	};
 
-	if (enrolments.length === 0) return <h3>There are no enrolments</h3>;
+	if (enrolments.length === 0)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 	const enrolmentsList = enrolments.map((enrolment) => {
 		return (
-			<div key={enrolment.id} className="col s6">
-				<div className="card grey lighten-5 hoverable">
+			<div key={enrolment.id} className="col s4">
+				<div className="card transparent hoverable">
 					<div className="card-content">
 						<p>
-							<b>Enrolment ID: </b>
-							<Link to={`/enrolments/${enrolment.id}`}> {enrolment.id}</Link>
+							<Link
+								className="card-title black-text"
+								to={`/enrolments/${enrolment.id}`}
+							>
+								Enrolment {enrolment.id}
+							</Link>
 						</p>
 						<p>
-							<b>Lecturer: </b>
-							<Link to={`/lecturers/${enrolment.lecturer.id}`}>
+							<Link
+								className="black-text"
+								to={`/lecturers/${enrolment.lecturer.id}`}
+							>
 								{" "}
 								{enrolment.lecturer.name}
 							</Link>
 						</p>
 						<p>
-							<b>Course title: </b>
-							<Link to={`/lecturers/${enrolment.course.id}`}>
+							<Link
+								className="black-text"
+								to={`/lecturers/${enrolment.course.id}`}
+							>
 								{" "}
 								{enrolment.course.title}
 							</Link>
 						</p>
-						<p>
-							<b>Status: </b> {enrolment.status}
-						</p>
+						<br />
+						<p className="light">Status: {enrolment.status}</p>
 					</div>
 					<div className="card-action">
-					<Modal
+						<Modal
 							resource="enrolments"
 							id={enrolment.id}
 							deleteCallback={removeEnrolment}

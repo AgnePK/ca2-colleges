@@ -38,25 +38,29 @@ const Index = () => {
 		});
 		setCourses(updatedCourses);
 	};
-	if (courses.length === 0) return <h3>There are no courses</h3>;
+	if (courses.length === 0)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 	const coursesList = courses.map((course) => {
 		return (
 			<div key={course.id} className="col s6">
-				<div className="card grey lighten-5 hoverable">
+				<div className="card transparent hoverable">
 					<div className="card-content">
 						<p>
-							<b>Title: </b>
-							<Link to={`/courses/${course.id}`}> {course.title}</Link>
+							<Link
+								className="card-title black-text"
+								to={`/courses/${course.id}`}
+							>
+								<b>{course.title}</b>
+							</Link>
 						</p>
-						<p className="truncate">
-							<b>Description: </b> {course.description}
-						</p>
-						<p>
-							<b>Course Code: </b> {course.code}
-						</p>
-						<p>
-							<b>Course Level: </b> {course.level}
-						</p>
+						<p>Course Code: {course.code}</p>
+						<p>Level: {course.level}</p>
+						<br />
+						<p className="truncate light">{course.description}</p>
 					</div>
 					<div className="card-action">
 						<Modal
@@ -71,12 +75,6 @@ const Index = () => {
 			</div>
 		);
 	});
-
-
-	// document.addEventListener('DOMContentLoaded', function() {
-	// 	var elems = document.querySelectorAll('.modal');
-	// 	var instances = M.Modal.init(elems, options);
-	//   });
 
 	return (
 		<>

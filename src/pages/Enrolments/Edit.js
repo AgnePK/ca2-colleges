@@ -9,6 +9,7 @@ const Edit = () => {
 	const [lecturers, setLecturers] = useState([]);
 
 	const [errors, setErrors] = useState({});
+	const [apiErrors, setApiErrors] = useState({});
 
 	const navigate = useNavigate();
 
@@ -113,6 +114,8 @@ const Edit = () => {
 				})
 				.catch((err) => {
 					console.error(err);
+					setApiErrors(err.response.data.errors);
+
 				});
 		}
 	};

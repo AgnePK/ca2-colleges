@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 const Create = () => {
 	const navigate = useNavigate();
 	const [errors, setErrors] = useState({});
+	const [apiErrors, setApiErrors] = useState({});
+
 	const [form, setForm] = useState({
 		name: "",
 		address: "",
@@ -50,6 +52,8 @@ const Create = () => {
 				.catch((err) => {
 					console.error(err);
 					console.log(err.response.data);
+					setApiErrors(err.response.data.errors);
+
 				});
 		}
 	};
@@ -71,6 +75,8 @@ const Create = () => {
 						name="name"
 					/>
 					<span style={errorStyle}>{errors.name?.message}</span>
+					<span style={errorStyle}>{apiErrors.name}</span>
+
 				</div>
 				<div>
 					Address:{" "}
@@ -81,16 +87,20 @@ const Create = () => {
 						name="address"
 					/>
 					<span style={errorStyle}>{errors.address?.message}</span>
+					<span style={errorStyle}>{apiErrors.address}</span>
+
 				</div>
 				<div>
 					Email:{" "}
 					<input
-						type="text"
+						type="email"
 						onChange={handleForm}
 						value={form.email}
 						name="email"
 					/>
 					<span style={errorStyle}>{errors.email?.message}</span>
+					<span style={errorStyle}>{apiErrors.email}</span>
+
 				</div>
 				<div>
 					Phone:{" "}
@@ -101,6 +111,8 @@ const Create = () => {
 						name="phone"
 					/>
 					<span style={errorStyle}>{errors.phone?.message}</span>
+					<span style={errorStyle}>{apiErrors.phone}</span>
+
 				</div>
 				<button
 					type="submit"

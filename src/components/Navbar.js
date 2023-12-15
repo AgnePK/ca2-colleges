@@ -14,24 +14,31 @@ const Navbar = () => {
 		<>
 			<div className="navbar-fixed">
 				<nav className="black-text">
-					<div className="nav-wrapper blue-grey lighten-5
-">
-						<Link to="/" className="brand-logo black-text center">
+					<div className="nav-wrapper blue-grey lighten-5">
+						<Link to="/" className="brand-logo black-text center hide-on-small-only">
 							Colleges
 						</Link>
 
-						<ul id="nav-mobile" className="left hide-on-sm-and-down">
+						<ul className="left ">
 							<li>
-								<Link className="black-text"to="/">Home</Link>
+								<Link className="black-text" to="/">
+									Home
+								</Link>
 							</li>
 							<li>
-								<Link className="black-text"to="/courses">Courses</Link>
+								<Link className="black-text" to="/courses">
+									Courses
+								</Link>
 							</li>
 							<li>
-								<Link className="black-text"to="/lecturers">Lecturers</Link>
+								<Link className="black-text" to="/lecturers">
+									Lecturers
+								</Link>
 							</li>
 							<li>
-								<Link className="black-text"to="/enrolments">Enrolments</Link>
+								<Link className="black-text" to="/enrolments">
+									Enrolments
+								</Link>
 							</li>
 						</ul>
 						<ul className="right">

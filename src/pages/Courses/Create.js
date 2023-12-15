@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 const Create = () => {
 	const navigate = useNavigate();
 	const [errors, setErrors] = useState({});
+	const [apiErrors, setApiErrors] = useState({});
+
 	const [form, setForm] = useState({
 		title: "",
 		description: "",
@@ -49,9 +51,11 @@ const Create = () => {
 					navigate("/courses");
 				})
 				.catch((err) => {
-					console.error(err);
-					console.log(err.response.data.errors.code[0]);
-					setErrors(err.response.data.errors.code[0]);
+					// console.error(err);
+					// console.log(err.response.data.errors.code[0]);
+					setErrors(err.response.data.errors);
+					setApiErrors(err.response.data.errors);
+
 				});
 		}
 	};
@@ -72,6 +76,7 @@ const Create = () => {
 						name="title"
 					/>
 					<span style={errorStyle}>{errors.title?.message}</span>
+					<span style={errorStyle}>{apiErrors.title}</span>
 				</div>
 				<div>
 					description:{" "}
@@ -82,6 +87,7 @@ const Create = () => {
 						name="description"
 					/>
 					<span style={errorStyle}>{errors.description?.message}</span>
+					<span style={errorStyle}>{apiErrors.description}</span>
 				</div>
 				<div>
 					Code:{" "}
@@ -92,6 +98,7 @@ const Create = () => {
 						name="code"
 					/>
 					<span style={errorStyle}>{errors.code?.message}</span>
+					<span style={errorStyle}>{apiErrors.code}</span>
 				</div>
 				<div>
 					points:{" "}
@@ -104,6 +111,8 @@ const Create = () => {
 						max="625"
 					/>
 					<span style={errorStyle}>{errors.points?.message}</span>
+					<span style={errorStyle}>{apiErrors.points}</span>
+
 				</div>
 				<div>
 					level:{" "}
@@ -116,6 +125,8 @@ const Create = () => {
 						max="10"
 					/>
 					<span style={errorStyle}>{errors.level?.message}</span>
+					<span style={errorStyle}>{apiErrors.level}</span>
+
 				</div>
 				{/* <div>{errors}</div> */}
 				<button

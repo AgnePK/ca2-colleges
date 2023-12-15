@@ -7,7 +7,7 @@ const Show = () => {
 	const { id } = useParams();
 	const [enrolment, setEnrolment] = useState();
 
-	let token = localStorage.getItem("token")
+	let token = localStorage.getItem("token");
 
 	useEffect(() => {
 		axios
@@ -17,30 +17,41 @@ const Show = () => {
 				},
 			})
 			.then((response) => {
-				// console.log(response.data);
+				console.log(response.data);
 				setEnrolment(response.data.data);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
-	},[id]);
+	}, [id]);
 	if (!enrolment) return <h3>Loading...</h3>;
 	return (
 		<>
-			<p>Show enrolment: {id}</p>
 			<div>
-				<p>
-					<b>Course: </b>{enrolment.course.title}
-				</p>
-				<p>
-					<b>course lecturer: </b>{enrolment.lecturer.name}
-				</p>
-				<p>
-					<b>Date: </b>{enrolment.date}
-				</p>
-				<Link to={`/enrolments/${id}/edit`}>Edit</Link>
-
-				<hr />
+				<div className="card white">
+					<div className="card-content black-text">
+						<span className="card-title">Enrolment number {id}</span>
+						<blockquote className="light">
+							{enrolment.lecturer.name} teaches {enrolment.course.title}. The
+							points for this course is {enrolment.course.points}. <br/>If you need to contact the lecturer; email at {enrolment.lecturer.email} or call on {enrolment.lecturer.phone}
+						</blockquote>
+						<br />
+						<div>
+							{"Date: "}
+							{enrolment.date}
+						</div>
+						<div>
+							{"Course Code: "}
+							{enrolment.course.code}
+						</div>
+					</div>
+					<div className="card-action">
+						<Link to={`/enrolments/${id}/edit`}>
+							{" "}
+							<i className="material-icons tiny">mode_edit</i> Edit
+						</Link>
+					</div>
+				</div>
 			</div>
 		</>
 	);

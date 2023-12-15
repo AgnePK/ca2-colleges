@@ -8,6 +8,8 @@ const Create = () => {
 	const [lecturers, setLecturers] = useState([]);
 
 	const [errors, setErrors] = useState({});
+	const [apiErrors, setApiErrors] = useState({});
+
 	const [form, setForm] = useState({
 		course_id: "",
 		lecturer_id: "",
@@ -86,6 +88,7 @@ const Create = () => {
 				.catch((err) => {
 					console.error(err);
 					console.log(err.response.data);
+					setApiErrors(err.response.data.errors);
 				});
 		}
 	};
@@ -117,6 +120,8 @@ const Create = () => {
 						))}
 					</select>
 					<span style={errorStyle}>{errors.course_id?.message}</span>
+					<span style={errorStyle}>{apiErrors.course_id}</span>
+
 				</div>
 				<div>
 					Lecturer:{" "}
@@ -136,6 +141,8 @@ const Create = () => {
 						))}
 					</select>
 					<span style={errorStyle}>{errors.lecturer_id?.message}</span>
+					<span style={errorStyle}>{apiErrors.lecturer_id}</span>
+
 				</div>
 				<div>
 					Date:{" "}
@@ -146,6 +153,8 @@ const Create = () => {
 						name="date"
 					/>
 					<span style={errorStyle}>{errors.date?.message}</span>
+					<span style={errorStyle}>{apiErrors.date}</span>
+
 				</div>
 				<div>
 					Time:{" "}
@@ -156,6 +165,8 @@ const Create = () => {
 						name="time"
 					/>
 					<span style={errorStyle}>{errors.time?.message}</span>
+					<span style={errorStyle}>{apiErrors.time}</span>
+
 				</div>
 
 				<div className="input-field col s12">
@@ -175,6 +186,8 @@ const Create = () => {
 						<option value="career_break">Career Break</option>
 					</select>
 					<span style={errorStyle}>{errors.status?.message}</span>
+					<span style={errorStyle}>{apiErrors.status}</span>
+
 				</div>
 
 				<br />

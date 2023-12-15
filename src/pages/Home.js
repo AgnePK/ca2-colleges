@@ -5,8 +5,14 @@ const Home = () => {
 	const { authenticated } = useAuth();
 	return (
 		<>
-			<h3>Please log in</h3>
-			{!authenticated ? <LoginForm /> : <p>You are Logged in</p>}
+			{!authenticated ? (
+				<div>
+					<h4>Please log in</h4>
+					<LoginForm />
+				</div>
+			) : (
+				<h5>You are Logged in</h5>
+			)}
 		</>
 	);
 };
