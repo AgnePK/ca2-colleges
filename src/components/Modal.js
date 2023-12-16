@@ -7,10 +7,8 @@ import DeleteBtn from "./DeleteBtn";
 class Modal extends Component {
 	// I am using this code from https://javascript.plainenglish.io/how-to-use-materialize-css-modal-in-react-53f9c85ba40d
 
-	// I had huge difficulties getting the general modal
-	// component to work
+	// The css framework has a modal but it foesnt work. i imported the js to make it function but it failed. i searched online for how people made a modal using this framework in react. 
 
-	// console.log("test");
 
 	componentDidMount() {
 		const options = {
@@ -34,12 +32,6 @@ class Modal extends Component {
 			endingTop: "10%",
 		};
 		M.Modal.init(this.Modal, options);
-
-		// let instance = M.Modal.getInstance(this.Modal);
-		// instance.open();
-		// instance.close();
-		// instance.destroy();
-
 	}
 	
 	render() {
@@ -58,15 +50,18 @@ class Modal extends Component {
 					id={`myModal-${this.props.id}`}
 					className="modal"
 				>
+					{/* {console.log(this.props.variable)} */}
 					<div className="modal-content">
-						<h4>Delete {this.props.resource}</h4>
-						<h4>{this.props.id}</h4>
-						<p>Warning! You are trying to delete this. Are you sure?</p>
+						<h4>Delete <b>{this.props.variable.name}</b></h4>
+						<p>Warning! You are trying to delete this.  <i>Are you sure?</i></p>
 					</div>
 					<div className="modal-footer">
 						<a className="modal-close waves-effect waves-red btn-flat black-text">
 							Cancel
 						</a>
+
+						{/* I put the delete button component in the modal so that when a user actually confirms to delete, they were informed that they may be deleting an enrolment too.  */}
+						{/* in the individual pages im putting in the props through the modal that i am importing. in here im putting those props through to the delete button. */}
 						<DeleteBtn
 							resource={this.props.resource}
 							id={this.props.id}
