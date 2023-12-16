@@ -24,14 +24,20 @@ const Show = () => {
 				console.error(err);
 			});
 	}, [id]);
-	if (!course) return <h3>Loading...</h3>;
+	if (!course)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 	return (
 		<>
 			<div>
+				<br/>
 				<div class="card white">
 					<div class="card-content black-text">
 						<span class="card-title">{course.title}</span>
-						<br/>
+						<br />
 						<blockquote className="light">{course.description} </blockquote>
 						<br />
 						<div>

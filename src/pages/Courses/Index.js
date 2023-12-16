@@ -46,20 +46,20 @@ const Index = () => {
 		);
 	const coursesList = courses.map((course) => {
 		return (
-			<div key={course.id} className="col s6">
+			<div key={course.id} className="col s12 m6 xl6">
 				<div className="card transparent hoverable">
 					<div className="card-content">
-						<p>
-							<Link
-								className="card-title black-text"
-								to={`/courses/${course.id}`}
-							>
-								<b>{course.title}</b>
-							</Link>
-						</p>
-						<p>Course Code: {course.code}</p>
-						<p>Level: {course.level}</p>
-						<br />
+						<Link
+							className="card-title black-text"
+							to={`/courses/${course.id}`}
+						>
+							<b>{course.title}</b>
+						</Link>
+						<blockquote>
+							<p>Course Code: {course.code}</p>
+							<p>Level: {course.level}</p>
+						</blockquote>
+						{/* <br /> */}
 						<p className="truncate light">{course.description}</p>
 					</div>
 					<div className="card-action">

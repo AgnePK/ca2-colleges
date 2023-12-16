@@ -21,8 +21,6 @@ import EnrolmentsCreate from "./pages/Enrolments/Create.js";
 import EnrolmentsEdit from "./pages/Enrolments/Edit.js";
 import EnrolmentsShow from "./pages/Enrolments/Show.js";
 
-import LoginForm from "./components/LoginForm.js";
-
 import { useAuth } from "./contexts/AuthContext.js";
 
 function App() {

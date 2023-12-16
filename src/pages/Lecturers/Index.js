@@ -46,10 +46,10 @@ const Index = () => {
 		return (
 			<div key={lecturer.id}>
 				{/* <div>{enrolmentInfo}</div> */}
-				<div className="col s6 m4 l4">
+				<div className="col s6 m4 xl4">
 					<div className="card transparent hoverable">
 						<div className="card-image">
-							<img src={`https://picsum.photos/100?random=${lecturer.id}`} />
+							<img src={`https://picsum.photos/100/70?random=${lecturer.id}`} />
 						</div>
 						<div className="card-content">
 							<p>

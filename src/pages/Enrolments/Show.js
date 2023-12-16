@@ -24,16 +24,24 @@ const Show = () => {
 				console.error(err);
 			});
 	}, [id]);
-	if (!enrolment) return <h3>Loading...</h3>;
+	if (!enrolment)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 	return (
 		<>
 			<div>
+				<br />
 				<div className="card white">
 					<div className="card-content black-text">
 						<span className="card-title">Enrolment number {id}</span>
 						<blockquote className="light">
 							{enrolment.lecturer.name} teaches {enrolment.course.title}. The
-							points for this course is {enrolment.course.points}. <br/>If you need to contact the lecturer; email at {enrolment.lecturer.email} or call on {enrolment.lecturer.phone}
+							points for this course is {enrolment.course.points}. <br />
+							If you need to contact the lecturer; email at{" "}
+							{enrolment.lecturer.email} or call on {enrolment.lecturer.phone}
 						</blockquote>
 						<br />
 						<div>

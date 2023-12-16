@@ -71,7 +71,12 @@ const Edit = () => {
 			});
 	}, [id]);
 
-	if (!enrolment) return <h3>Enrolment not found</h3>;
+	if (!enrolment)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 
 	const handleForm = (e) => {
 		setForm((prevState) => ({
@@ -115,7 +120,6 @@ const Edit = () => {
 				.catch((err) => {
 					console.error(err);
 					setApiErrors(err.response.data.errors);
-
 				});
 		}
 	};

@@ -8,7 +8,7 @@ const Edit = () => {
 	const [errors, setErrors] = useState({});
 	const [apiErrors, setApiErrors] = useState({});
 
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [form, setForm] = useState({
 		name: "",
@@ -17,7 +17,7 @@ const Edit = () => {
 		address: "",
 	});
 
-    const errorStyle = {
+	const errorStyle = {
 		color: "red",
 	};
 
@@ -32,14 +32,19 @@ const Edit = () => {
 			})
 			.then((response) => {
 				setLecturer(response.data.data);
-                setForm(response.data.data)
+				setForm(response.data.data);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
 	}, [id]);
 
-	if (!lecturer) return <h3>Lecturer not found</h3>;
+	if (!lecturer)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 
 	const handleForm = (e) => {
 		setForm((prevState) => ({
@@ -84,16 +89,14 @@ const Edit = () => {
 					console.error(err);
 					console.error(err.response);
 					setApiErrors(err.response.data.errors);
-
 				});
 		}
 	};
 
-
 	return (
 		<>
 			<h2>Edit your lecturer</h2>
-            <form onSubmit={submitForm}>
+			<form onSubmit={submitForm}>
 				<div>
 					Name:{" "}
 					<input
@@ -104,7 +107,6 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.name?.message}</span>
 					<span style={errorStyle}>{apiErrors.name}</span>
-
 				</div>
 				<div>
 					Email:{" "}
@@ -116,7 +118,6 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.email?.message}</span>
 					<span style={errorStyle}>{apiErrors.email}</span>
-
 				</div>
 				<div>
 					Phone Number:{" "}
@@ -128,10 +129,9 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.phone?.message}</span>
 					<span style={errorStyle}>{apiErrors.phone}</span>
-
 				</div>
 				<div>
-				Address:{" "}
+					Address:{" "}
 					<input
 						type="text"
 						onChange={handleForm}
@@ -140,7 +140,6 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.address?.message}</span>
 					<span style={errorStyle}>{apiErrors.address}</span>
-
 				</div>
 				<button
 					type="submit"

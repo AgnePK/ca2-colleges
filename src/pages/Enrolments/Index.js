@@ -44,7 +44,7 @@ const Index = () => {
 		);
 	const enrolmentsList = enrolments.map((enrolment) => {
 		return (
-			<div key={enrolment.id} className="col s4">
+			<div key={enrolment.id} className="col s12 m6 xl4">
 				<div className="card transparent hoverable">
 					<div className="card-content">
 						<p>
@@ -55,26 +55,28 @@ const Index = () => {
 								Enrolment {enrolment.id}
 							</Link>
 						</p>
-						<p>
-							<Link
-								className="black-text"
-								to={`/lecturers/${enrolment.lecturer.id}`}
-							>
-								{" "}
-								{enrolment.lecturer.name}
-							</Link>
-						</p>
-						<p>
-							<Link
-								className="black-text"
-								to={`/lecturers/${enrolment.course.id}`}
-							>
-								{" "}
-								{enrolment.course.title}
-							</Link>
-						</p>
-						<br />
-						<p className="light">Status: {enrolment.status}</p>
+						<blockquote className="grey lighten-4">
+							<p>
+								<Link
+									className="black-text"
+									to={`/lecturers/${enrolment.lecturer.id}`}
+								>
+									{" "}
+									{enrolment.lecturer.name}
+								</Link>
+							</p>
+							<p>
+								<Link
+									className="black-text"
+									to={`/lecturers/${enrolment.course.id}`}
+								>
+									{" "}
+									{enrolment.course.title}
+								</Link>
+							</p>
+						</blockquote>
+						{/* <br /> */}
+						<p className="light">{enrolment.status}</p>
 					</div>
 					<div className="card-action">
 						<Modal

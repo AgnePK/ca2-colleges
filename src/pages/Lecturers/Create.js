@@ -117,7 +117,7 @@ const Create = () => {
 				<button
 					type="submit"
 					name="action"
-					className="btn waves-effect waves-light right"
+					className="btn waves-effect waves-light"
 				>
 					Submit
 					<i className="material-icons right">send</i>

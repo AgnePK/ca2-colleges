@@ -40,7 +40,12 @@ const Edit = () => {
 			});
 	}, [id]);
 
-	if (!course) return <h3>Course not found</h3>;
+	if (!course)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 
 	const handleForm = (e) => {
 		setForm((prevState) => ({
@@ -113,7 +118,6 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.description?.message}</span>
 					<span style={errorStyle}>{apiErrors.description}</span>
-
 				</div>
 				<div>
 					Code:{" "}
@@ -125,7 +129,6 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.code?.message}</span>
 					<span style={errorStyle}>{apiErrors.code}</span>
-
 				</div>
 				<div>
 					points:{" "}
@@ -139,7 +142,6 @@ const Edit = () => {
 					/>
 					<span style={errorStyle}>{errors.points?.message}</span>
 					<span style={errorStyle}>{apiErrors.points}</span>
-
 				</div>
 				<div>
 					level:{" "}

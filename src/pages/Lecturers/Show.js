@@ -24,7 +24,12 @@ const Show = () => {
 				console.error(err);
 			});
 	}, [id]);
-	if (!lecturer) return <h3>Loading...</h3>;
+	if (!lecturer)
+		return (
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		);
 	return (
 		<>
 			<div className="row">
