@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "../../congif/api.js";
 import { useNavigate } from "react-router-dom";
+
 const Create = () => {
 	const navigate = useNavigate();
 	const [errors, setErrors] = useState({});
@@ -19,20 +20,29 @@ const Create = () => {
 			[e.target.name]: e.target.value,
 		}));
 	};
+
+	const validateCode = (code) => {
+		const codePattern = /^[A-Za-z]{2}\d{3}$/;
+		return codePattern.test(code);
+	};
 	const isRequired = (fields) => {
+		const allErrors = {};
 		let included = true;
-		setErrors({});
+
+		// setErrors({});
 		fields.forEach((field) => {
 			if (!form[field]) {
 				included = false;
-				setErrors((prevState) => ({
-					...prevState,
-					[field]: {
-						message: `${field} is required`,
-					},
-				}));
+				allErrors[field] = { message: `${field} is required!` };
 			}
 		});
+		if (form["code"] && !validateCode(form["code"])) {
+			included = false;
+			allErrors["code"] = {
+				message: `Please make the Code format "AB123"`,
+			};
+		}
+		setErrors(allErrors);
 		return included;
 	};
 	const submitForm = (e) => {
@@ -55,14 +65,12 @@ const Create = () => {
 					// console.log(err.response.data.errors.code[0]);
 					setErrors(err.response.data.errors);
 					setApiErrors(err.response.data.errors);
-
 				});
 		}
 	};
 	const errorStyle = {
 		color: "red",
 	};
-
 	return (
 		<>
 			<h2>Create your course</h2>
@@ -112,7 +120,6 @@ const Create = () => {
 					/>
 					<span style={errorStyle}>{errors.points?.message}</span>
 					<span style={errorStyle}>{apiErrors.points}</span>
-
 				</div>
 				<div>
 					level:{" "}
@@ -126,7 +133,6 @@ const Create = () => {
 					/>
 					<span style={errorStyle}>{errors.level?.message}</span>
 					<span style={errorStyle}>{apiErrors.level}</span>
-
 				</div>
 				{/* <div>{errors}</div> */}
 				<button
