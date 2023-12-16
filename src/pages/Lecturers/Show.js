@@ -65,8 +65,9 @@ const Show = () => {
 						{lecturer.enrolments?.map((enrolment) => (
 							<li className="collection-item" key={enrolment.id}>
 								<div>
+									{/* Here i am looping through all the enrolments of the lecturer and creating links to access that enrolment */}
 									{enrolment.course.title}
-									<Link to={`/enrolment/${id}`}>
+									<Link to={`/enrolments/${enrolment.id}`}>
 										<i class="material-icons right secondary-content">send</i>
 									</Link>
 								</div>

@@ -41,6 +41,7 @@ const Create = () => {
 	};
 	let token = localStorage.getItem("token");
 
+	// calling both apis for courses and lecturers to get the information to populate the dropdowns for each. 
 	useEffect(() => {
 		axios
 			.get(`/api/courses`, {
@@ -82,12 +83,12 @@ const Create = () => {
 					},
 				})
 				.then((response) => {
-					console.log(response.data.data);
+					// console.log(response.data.data);
 					navigate("/enrolments");
 				})
 				.catch((err) => {
-					console.error(err);
-					console.log(err.response.data);
+					// console.error(err);
+					// console.log(err.response.data);
 					setApiErrors(err.response.data.errors);
 				});
 		}
@@ -112,7 +113,7 @@ const Create = () => {
 						<option value="" disabled selected>
 							Choose Course
 						</option>
-
+						{/* Looping through each course to populate each option with one lecturer */}
 						{courses?.map((course) => (
 							<option key={course.id} value={course.id}>
 								{course.title}
@@ -169,6 +170,7 @@ const Create = () => {
 
 				</div>
 
+				{/* In this div i am creating a hard-coded dropdown with four options. The first one is disabled as its only asking the users to choose one of the available options */}
 				<div className="input-field col s12">
 					<select
 						className="browser-default"
@@ -194,7 +196,7 @@ const Create = () => {
 				<button
 					type="submit"
 					name="action"
-					className="btn waves-effect waves-light right"
+					className="btn waves-effect waves-light"
 				>
 					Submit
 					<i className="material-icons right">send</i>

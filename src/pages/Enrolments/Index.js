@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "../../congif/api.js";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext.js";
 
 import Modal from "../../components/Modal.js";
 
 const Index = () => {
-	const { authenticated } = useAuth();
-
 	const [enrolments, setEnrolments] = useState("");
 
 	let token = localStorage.getItem("token");

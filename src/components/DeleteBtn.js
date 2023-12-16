@@ -8,7 +8,10 @@ const DeleteBtn = ({ id, resource, deleteCallback, variable }) => {
 		setIsLoading(true);
 		let token = localStorage.getItem("token");
 
-		// console.log(variable.enrolments);
+		// this if statement is checking to see IF the variable that is being put through (in props) has enrolments or not
+		// IF it does, the enrolments will be deleted first, then the course/ lecturer after.
+		// if its an enrolment alone that is being deleted, it ignores the next code that deletes lecturers and courses. because it was already deleted before.
+		//and visa versa, if no enrolments, it skips and deletes the course and lecturer.
 
 		if (variable.enrolments) {
 			let listOfDeleteRequests = variable.enrolments.map((current, index) =>
@@ -46,6 +49,8 @@ const DeleteBtn = ({ id, resource, deleteCallback, variable }) => {
 				});
 		}
 	};
+
+	// Attempted to use the spinner from MaterializeCSS
 	let spinner = (
 		<div className="preloader-wrapper small active">
 			<div className="spinner-layer spinner-red-only">
@@ -67,9 +72,9 @@ const DeleteBtn = ({ id, resource, deleteCallback, variable }) => {
 			<button
 				onClick={onDelete}
 				className="btn btn-small waves-effect waves-light red"
-			>{isLoading ?  spinner  : "Delete"}
+			>
+				{isLoading ? spinner : "Delete"}
 			</button>
-				
 		</>
 	);
 };

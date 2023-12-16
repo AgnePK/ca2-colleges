@@ -7,6 +7,7 @@ const Create = () => {
 	const [errors, setErrors] = useState({});
 	const [apiErrors, setApiErrors] = useState({});
 
+
 	const [form, setForm] = useState({
 		title: "",
 		description: "",
@@ -21,6 +22,8 @@ const Create = () => {
 		}));
 	};
 
+	// these lines of code validates if the data is there and if it is correct.
+	// the code pattern is is testing if the input is the correct format.
 	const validateCode = (code) => {
 		const codePattern = /^[A-Za-z]{2}\d{3}$/;
 		return codePattern.test(code);
@@ -29,7 +32,8 @@ const Create = () => {
 		const allErrors = {};
 		let included = true;
 
-		// setErrors({});
+		// This is looping through each value in the form and seeing if it is empty.
+		// if it is, an error will appear
 		fields.forEach((field) => {
 			if (!form[field]) {
 				included = false;
@@ -134,7 +138,6 @@ const Create = () => {
 					<span style={errorStyle}>{errors.level?.message}</span>
 					<span style={errorStyle}>{apiErrors.level}</span>
 				</div>
-				{/* <div>{errors}</div> */}
 				<button
 					type="submit"
 					name="action"

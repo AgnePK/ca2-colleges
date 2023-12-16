@@ -27,12 +27,14 @@ function App() {
 	let protectedRoutes;
 	const { authenticated, onAuthenticated } = useAuth();
 
+	// Authenticating the user if localstorage has a token
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
 			onAuthenticated(true);
 		}
 	}, []);
 
+	// protecting routes from unauth users. so if not logged in, they cant access thse pages
 	if (authenticated) {
 		protectedRoutes = (
 			<>
@@ -63,8 +65,8 @@ function App() {
 				<div className="container">
 					<Routes>
 						<Route path="/" element={<Home />}></Route>
-						{/* <Route path="/courses" element={<CoursesIndex />}></Route> */}
 
+						{/* Displaying the protected routes in the routes tag */}
 						{protectedRoutes}
 
 						<Route path="*" element={<PageNotFound />}></Route>

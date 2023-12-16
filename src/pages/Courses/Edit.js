@@ -24,6 +24,7 @@ const Edit = () => {
 
 	let token = localStorage.getItem("token");
 
+	// this axios is getting the info of this course and filling in the correct data to be able to edit
 	useEffect(() => {
 		axios
 			.get(`/api/courses/${id}`, {
@@ -72,7 +73,7 @@ const Edit = () => {
 
 	const submitForm = (e) => {
 		e.preventDefault();
-		console.log("submitted", form);
+		// console.log("submitted", form);
 
 		if (isRequired(["title", "description", "code", "points", "level"])) {
 			let token = localStorage.getItem("token");
@@ -83,11 +84,11 @@ const Edit = () => {
 					},
 				})
 				.then((response) => {
-					console.log(response.data.data);
+					// console.log(response.data.data);
 					navigate(`/courses/${id}`);
 				})
 				.catch((err) => {
-					console.error(err);
+					// console.error(err);
 					setApiErrors(err.response.data.errors);
 				});
 		}

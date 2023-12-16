@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "../../congif/api.js";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext.js";
 
-import DeleteBtn from "../../components/DeleteBtn";
 import Modal from "../../components/Modal.js";
 
-// import M from "materialize-css";
 
 const Index = () => {
-	const { authenticated } = useAuth();
 
 	const [courses, setCourses] = useState("");
 
@@ -31,6 +27,7 @@ const Index = () => {
 			});
 	}, []);
 
+	// remove course will remove the physical card of the course that was just deleted. it removes the course from the overall courses and updates the overall with the new (updated) course. So the Courses returns the new cards without the deleted one
 	const removeCourse = (id) => {
 		console.log("deleted", id);
 		let updatedCourses = courses.filter((course) => {
@@ -44,6 +41,8 @@ const Index = () => {
 				<div class="indeterminate"></div>
 			</div>
 		);
+	
+	// looping through each course from the api and designing the way the card looks. 
 	const coursesList = courses.map((course) => {
 		return (
 			<div key={course.id} className="col s12 m6 xl6">

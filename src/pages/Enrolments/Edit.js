@@ -144,6 +144,7 @@ const Edit = () => {
 						))}
 					</select>
 					<span style={errorStyle}>{errors.course_id?.message}</span>
+					<span style={errorStyle}>{apiErrors.course_id}</span>
 				</div>
 				<div>
 					Lecturer:{" "}
@@ -161,6 +162,8 @@ const Edit = () => {
 						))}
 					</select>
 					<span style={errorStyle}>{errors.description?.message}</span>
+					<span style={errorStyle}>{apiErrors.description}</span>
+
 				</div>
 				<div>
 					Date:{" "}
@@ -171,6 +174,7 @@ const Edit = () => {
 						name="date"
 					/>
 					<span style={errorStyle}>{errors.code?.message}</span>
+					<span style={errorStyle}>{apiErrors.code}</span>
 				</div>
 				<div>
 					Time:{" "}
@@ -181,6 +185,8 @@ const Edit = () => {
 						name="time"
 					/>
 					<span style={errorStyle}>{errors.points?.message}</span>
+					<span style={errorStyle}>{apiErrors.points}</span>
+
 				</div>
 
 				<div className="input-field col s12">
@@ -198,8 +204,8 @@ const Edit = () => {
 						<option value="career_break">Career Break</option>
 					</select>
 					<span style={errorStyle}>{errors.status?.message}</span>
+					<span style={errorStyle}>{apiErrors.status}</span>
 				</div>
-
 				<br />
 				<button
 					type="submit"

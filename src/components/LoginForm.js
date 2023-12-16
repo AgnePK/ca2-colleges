@@ -8,6 +8,7 @@ const LoginForm = () => {
 	const { onAuthenticated } = useAuth();
 	const navigate = useNavigate();
 
+	// setting the form values to submit to the API
 	const [form, setForm] = useState({
 		email: "",
 		password: "",
@@ -17,6 +18,7 @@ const LoginForm = () => {
 		color: "red",
 	};
 
+	// taking the form values and sending it to the API. in .then setting auth to true which makes the user logged in.
 	const handleClick = () => {
 		console.log("clicked");
 		axios
@@ -36,6 +38,8 @@ const LoginForm = () => {
 			});
 	};
 	const [ErrorMsg, setErrorMsg] = useState();
+	// This is handeling the form and all its values.
+	// its going through each value and setting the target as value that was set by the user.
 	const handleForm = (e) => {
 		setForm((prevState) => ({
 			...prevState,
