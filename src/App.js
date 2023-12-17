@@ -52,8 +52,6 @@ function App() {
 				<Route path="/enrolments/create" element={<EnrolmentsCreate />}></Route>
 				<Route path="/enrolments/:id/edit" element={<EnrolmentsEdit />}></Route>
 				<Route path="/enrolments/:id" element={<EnrolmentsShow />}></Route>
-
-
 			</>
 		);
 	}
